@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -162,24 +165,28 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null, "Por favor escribe tu fecha de nacimiento en numeros!");
         SignoZodiaco newframe = new SignoZodiaco();
         newframe.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(null, "Por favor escribe tu fecha de nacimiento en numeros!");
         CalDiasSufridos newframe = new CalDiasSufridos();
         newframe.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(null, "Por favor escribe tu fecha de nacimiento en numeros!");
         CalAniosPerro newframe = new CalAniosPerro();
         newframe.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JOptionPane.showMessageDialog(null, "Por favor escribe tu fecha de nacimiento en numeros!");
         CalNumerologia newframe = new CalNumerologia();
         newframe.setVisible(true);
         this.dispose();// TODO add your handling code here:

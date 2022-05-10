@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author maroj
@@ -35,6 +34,8 @@ public class CalNumerologia extends javax.swing.JFrame {
         textDia = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +49,7 @@ public class CalNumerologia extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Tu signo es:");
+        jLabel4.setText("Tu suerte es:");
 
         jButton3.setText("Calcular");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -77,12 +78,22 @@ public class CalNumerologia extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel5.setText("Numerologia");
+
+        jButton4.setText("Reinciar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(textDia, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -94,18 +105,26 @@ public class CalNumerologia extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton3))
-                .addGap(80, 80, 80))
+                    .addComponent(jLabel5)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,7 +133,7 @@ public class CalNumerologia extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jButton2))
-                .addGap(66, 66, 66))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -128,21 +147,25 @@ public class CalNumerologia extends javax.swing.JFrame {
         int diaN = Integer.parseInt(textDia.getText()); //convierte la cadena a enteros.
         int resultado = 0;
         int resultado2 = 0;
-        
-        while (diaN > 0) {
-            resultado += diaN % 10;
-            diaN = diaN / 10;
-        }
-        if (resultado > 10) {
-            while (resultado > 0) {
-                resultado2 += resultado % 10;
-                resultado = resultado / 10;
-            }
-            textFinal.setText(String.valueOf(resultado2));
-            //System.out.println("Tu numero de la suerte es: " + resultado2);
+        if (diaN > 31 || diaN < 1) {
+            //System.out.println("Te saliste del rango, eres un malnacido :( ");
+            JOptionPane.showMessageDialog(null, "Eres un Dios naciste un dia que no existe!");
         } else {
-            textFinal.setText(String.valueOf(resultado));
-            //System.out.println("Tu numero de la suerte es:" + resultado);
+            while (diaN > 0) {
+                resultado += diaN % 10;
+                diaN = diaN / 10;
+            }
+            if (resultado > 10) {
+                while (resultado > 0) {
+                    resultado2 += resultado % 10;
+                    resultado = resultado / 10;
+                }
+                textFinal.setText(String.valueOf(resultado2));
+                //System.out.println("Tu numero de la suerte es: " + resultado2);
+            } else {
+                textFinal.setText(String.valueOf(resultado));
+                //System.out.println("Tu numero de la suerte es:" + resultado);
+            }
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -160,6 +183,12 @@ public class CalNumerologia extends javax.swing.JFrame {
     private void textDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textDiaActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        textDia.setText(null);
+        textFinal.setText(null);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,8 +229,10 @@ public class CalNumerologia extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField textDia;
     private javax.swing.JTextField textFinal;
     // End of variables declaration//GEN-END:variables

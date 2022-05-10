@@ -1,6 +1,7 @@
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -40,6 +41,8 @@ public class CalDiasSufridos extends javax.swing.JFrame {
         textAnio = new javax.swing.JTextField();
         textDiasSufridos = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,12 +91,22 @@ public class CalDiasSufridos extends javax.swing.JFrame {
 
         jLabel4.setText("Dias Vividos");
 
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel5.setText("Dias Sufridos");
+
+        jButton4.setText("Reinciar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(textDia, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -101,7 +114,10 @@ public class CalDiasSufridos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
                     .addComponent(textMes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(68, 68, 68)
@@ -109,17 +125,20 @@ public class CalDiasSufridos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(28, 28, 28)
-                        .addComponent(textDiasSufridos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textDiasSufridos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
                     .addComponent(textAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +149,9 @@ public class CalDiasSufridos extends javax.swing.JFrame {
                     .addComponent(textDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textDiasSufridos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,7 +160,7 @@ public class CalDiasSufridos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addGap(64, 64, 64))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -161,10 +182,14 @@ public class CalDiasSufridos extends javax.swing.JFrame {
         int anioN = Integer.parseInt(textAnio.getText());
         
         if (diaN > 31 || diaN < 1) {
-            System.out.println("Te saliste del rango, eres un malnacido :( ");
-        } else if (mesN > 12 || mesN < 1) {
-            System.out.println("Te saliste del rango");
-        } else {
+            //System.out.println("Te saliste del rango, eres un malnacido :( ");
+            JOptionPane.showMessageDialog(null, "Eres un Dios naciste un dia que no existe!");
+        }else if (mesN > 12 || mesN < 1) {
+            //System.out.println("Te saliste del rango");
+            JOptionPane.showMessageDialog(null, "Eres un Dios naciste un mes que no existe!");
+        }else if (anioN <=1920){
+            JOptionPane.showMessageDialog(null, "Eres un Dios tienes mas de 100 años!");
+        }else{
             LocalDate diaNacimiento = LocalDate.of(anioN, mesN, diaN);
             LocalDate fechaActual = LocalDate.now();
             long diasSufridos= ChronoUnit.DAYS.between(diaNacimiento, fechaActual);
@@ -181,6 +206,13 @@ public class CalDiasSufridos extends javax.swing.JFrame {
     private void textDiasSufridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDiasSufridosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textDiasSufridosActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        textDia.setText(null);   
+        textMes.setText(null);  
+        textAnio.setText(null);
+        textDiasSufridos.setText(null);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     /**
@@ -222,10 +254,12 @@ public class CalDiasSufridos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField textAnio;
     private javax.swing.JTextField textDia;
     private javax.swing.JTextField textDiasSufridos;
